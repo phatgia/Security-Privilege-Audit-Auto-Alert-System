@@ -1,0 +1,130 @@
+2026-06-21 18:46:34 INFO     ==================================================
+2026-06-21 18:46:34 INFO     🔐 Privilege Auditor khởi động
+2026-06-21 18:46:34 INFO        Thời gian: 2026-06-21 18:46:34
+2026-06-21 18:46:34 INFO     ==================================================
+2026-06-21 18:46:34 INFO     🔍 Bắt đầu audit hệ thống: tất cả
+2026-06-21 18:46:34 INFO     [Linux] 🐧 Bắt đầu kiểm tra Linux privileges...
+2026-06-21 18:46:34 INFO     [Linux] Đang parse sudoers: data/sample_sudoers
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers group rule: %admin ALL=(ALL) ALL
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers group rule: %sudo   ALL=(ALL:ALL) ALL
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers group rule: %wheel  ALL=(ALL:ALL) ALL
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: john.doe | NOPASSWD=True | Full=True
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: jane.smith | NOPASSWD=True | Full=True
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: michael.lee | NOPASSWD=True | Full=False
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: devops01 | NOPASSWD=True | Full=False
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: deploy_svc | NOPASSWD=True | Full=False
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: backup_agent | NOPASSWD=True | Full=False
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: admin_old | NOPASSWD=False | Full=True
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: test_admin | NOPASSWD=True | Full=True
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: sysadmin2019 | NOPASSWD=False | Full=True
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: helpdesk | NOPASSWD=True | Full=False
+2026-06-21 18:46:34 DEBUG    [Linux] Sudoers entry: monitoring | NOPASSWD=True | Full=False
+2026-06-21 18:46:34 INFO     [Linux] Đang parse group file: data/sample_group
+2026-06-21 18:46:34 INFO     [Linux] Nhóm đặc quyền 'root': 0 thành viên
+2026-06-21 18:46:34 INFO     [Linux] Nhóm đặc quyền 'adm': 2 thành viên
+2026-06-21 18:46:34 INFO     [Linux] Nhóm đặc quyền 'sudo': 5 thành viên
+2026-06-21 18:46:34 INFO     [Linux] Nhóm đặc quyền 'wheel': 7 thành viên
+2026-06-21 18:46:34 INFO     [Linux] Đang load lastlog data: data/sample_lastlog.json
+2026-06-21 18:46:34 WARNING  [Linux] Không có dữ liệu lastlog cho: syslog
+2026-06-21 18:46:34 INFO     [Linux] 📊 Kết quả: 12 users đặc quyền, 5 không hoạt động, 3 critical
+2026-06-21 18:46:34 INFO     [Linux] ✅ Hoàn thành: 12 privileged users tìm thấy
+2026-06-21 18:46:34 INFO     [AD] 🏢 Bắt đầu kiểm tra Active Directory...
+2026-06-21 18:46:34 INFO     [AD] Đang load dữ liệu từ: data/sample_ad_users.json
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: alice.nguyen | Groups: ['Domain Admins']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: bob.tran | Groups: ['Domain Admins', 'Enterprise Admins']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: charlie.pham | Groups: ['Domain Admins', 'Schema Admins', 'Enterprise Admins']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: diana.le | Groups: ['Backup Operators']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: svc_backup | Groups: ['Backup Operators']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: erik.hoang | Groups: ['Domain Admins']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: admin_temp2024 | Groups: ['Domain Admins']
+2026-06-21 18:46:34 DEBUG    [AD] User loaded: frank.vu | Groups: ['Domain Admins']
+2026-06-21 18:46:34 INFO     [AD] 📊 Kết quả: 8 privileged users, 4 inactive, 3 critical
+2026-06-21 18:46:34 INFO     [AD] ✅ Hoàn thành: 8 privileged users tìm thấy
+2026-06-21 18:46:34 INFO     [AWS] ☁️ Bắt đầu kiểm tra AWS IAM...
+2026-06-21 18:46:34 INFO     [AWS] Đang load dữ liệu từ: data/sample_iam_data.json
+2026-06-21 18:46:34 INFO     [AWS] 📊 Kết quả: 5 admins, 4 inactive, 4 không có MFA
+2026-06-21 18:46:34 INFO     [AWS] ✅ Hoàn thành: 7 users, 5 có quyền admin
+2026-06-21 18:46:52 INFO     ==================================================
+2026-06-21 18:46:52 INFO     🔐 Privilege Auditor khởi động
+2026-06-21 18:46:52 INFO        Thời gian: 2026-06-21 18:46:52
+2026-06-21 18:46:52 INFO     ==================================================
+2026-06-21 18:46:52 INFO     🔍 Bắt đầu audit hệ thống: tất cả
+2026-06-21 18:46:52 INFO     [Linux] 🐧 Bắt đầu kiểm tra Linux privileges...
+2026-06-21 18:46:52 INFO     [Linux] Đang parse sudoers: data/sample_sudoers
+2026-06-21 18:46:52 INFO     [Linux] Đang parse group file: data/sample_group
+2026-06-21 18:46:52 INFO     [Linux] Nhóm đặc quyền 'root': 0 thành viên
+2026-06-21 18:46:52 INFO     [Linux] Nhóm đặc quyền 'adm': 2 thành viên
+2026-06-21 18:46:52 INFO     [Linux] Nhóm đặc quyền 'sudo': 5 thành viên
+2026-06-21 18:46:52 INFO     [Linux] Nhóm đặc quyền 'wheel': 7 thành viên
+2026-06-21 18:46:52 INFO     [Linux] Đang load lastlog data: data/sample_lastlog.json
+2026-06-21 18:46:52 WARNING  [Linux] Không có dữ liệu lastlog cho: syslog
+2026-06-21 18:46:52 INFO     [Linux] 📊 Kết quả: 12 users đặc quyền, 5 không hoạt động, 3 critical
+2026-06-21 18:46:52 INFO     [Linux] ✅ Hoàn thành: 12 privileged users tìm thấy
+2026-06-21 18:46:52 INFO     [AD] 🏢 Bắt đầu kiểm tra Active Directory...
+2026-06-21 18:46:52 INFO     [AD] Đang load dữ liệu từ: data/sample_ad_users.json
+2026-06-21 18:46:52 INFO     [AD] 📊 Kết quả: 8 privileged users, 4 inactive, 3 critical
+2026-06-21 18:46:52 INFO     [AD] ✅ Hoàn thành: 8 privileged users tìm thấy
+2026-06-21 18:46:52 INFO     [AWS] ☁️ Bắt đầu kiểm tra AWS IAM...
+2026-06-21 18:46:52 INFO     [AWS] Đang load dữ liệu từ: data/sample_iam_data.json
+2026-06-21 18:46:52 INFO     [AWS] 📊 Kết quả: 5 admins, 4 inactive, 4 không có MFA
+2026-06-21 18:46:52 INFO     [AWS] ✅ Hoàn thành: 7 users, 5 có quyền admin
+2026-06-21 18:46:52 INFO     [LogCollector] 📜 Đang parse log file: data/sample_auth.log
+2026-06-21 18:46:52 WARNING  [LogCollector] Không tìm thấy data/sample_auth.log, dùng dữ liệu demo
+2026-06-21 18:46:52 WARNING  [LogCollector] 🚨 Phát hiện brute force: ['sysadmin2019']
+2026-06-21 18:46:52 INFO     [LogCollector] ✅ Phân tích xong: 8 sudo events, 5 SSH logins, 1 suspicious accounts
+2026-06-21 18:46:52 INFO     [Report] 📄 Báo cáo HTML: reports\audit_report.html
+2026-06-21 18:46:52 INFO     [Report] 📄 Báo cáo JSON: reports\audit_20260621_184652.json
+2026-06-21 18:46:52 INFO     📄 Báo cáo HTML: reports\audit_report.html
+2026-06-21 18:46:52 INFO     📄 Báo cáo JSON: reports\audit_20260621_184652.json
+2026-06-21 18:46:52 INFO     📢 Đang gửi cảnh báo...
+2026-06-21 18:46:53 INFO     [Telegram] ✅ Alerter khởi tạo thành công (chat_id: YOUR_CHAT_ID_HERE)
+2026-06-21 18:46:53 WARNING  [Slack] ⚠️ Disabled hoặc thiếu webhook_url
+2026-06-21 18:46:53 INFO     [Alert] Đang gửi audit summary...
+2026-06-21 18:46:53 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:53 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:53 INFO     [Alert] Gửi danh sách 4 inactive admins cho linux...
+2026-06-21 18:46:54 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:54 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:54 INFO     [Alert] Cảnh báo chi tiết: sysadmin2019 (linux)
+2026-06-21 18:46:55 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:55 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:55 INFO     [Alert] Cảnh báo chi tiết: admin_old (linux)
+2026-06-21 18:46:55 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:55 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:55 INFO     [Alert] Cảnh báo chi tiết: test_admin (linux)
+2026-06-21 18:46:56 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:56 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:56 INFO     [Alert] Cảnh báo chi tiết: michael.lee (linux)
+2026-06-21 18:46:57 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:57 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:57 INFO     [Alert] Cảnh báo chi tiết: jane.smith (linux)
+2026-06-21 18:46:58 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:58 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:58 INFO     [Alert] Gửi danh sách 4 inactive admins cho active_directory...
+2026-06-21 18:46:58 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:58 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:58 INFO     [Alert] Cảnh báo chi tiết: admin_temp2024 (active_directory)
+2026-06-21 18:46:59 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:46:59 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:46:59 INFO     [Alert] Cảnh báo chi tiết: charlie.pham (active_directory)
+2026-06-21 18:47:00 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:00 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:00 INFO     [Alert] Cảnh báo chi tiết: bob.tran (active_directory)
+2026-06-21 18:47:00 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:00 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:00 INFO     [Alert] Gửi danh sách 4 inactive admins cho aws_iam...
+2026-06-21 18:47:01 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:01 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:01 INFO     [Alert] Cảnh báo chi tiết: root-backup-2021 (aws_iam)
+2026-06-21 18:47:02 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:02 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:02 INFO     [Alert] Cảnh báo chi tiết: charlie-admin (aws_iam)
+2026-06-21 18:47:03 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:03 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:03 INFO     [Alert] Cảnh báo chi tiết: erik-temp (aws_iam)
+2026-06-21 18:47:05 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:05 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:05 INFO     [Alert] Cảnh báo chi tiết: bob-devops (aws_iam)
+2026-06-21 18:47:05 ERROR    [Telegram] ❌ Lỗi kết nối: HTTP Error 404: Not Found
+2026-06-21 18:47:05 INFO     [Slack] (DISABLED) Sẽ gửi payload đến #security-alerts
+2026-06-21 18:47:05 INFO     ✅ Hoàn thành audit!

@@ -1,0 +1,67 @@
+# ============================================================
+#  🔐 Privilege Auditor - Configuration File
+# ============================================================
+
+# Thresholds
+thresholds:
+  inactive_days: 30          # Ngày không hoạt động = cảnh báo
+  critical_inactive_days: 60 # Ngày không hoạt động = critical
+  check_interval_hours: 24   # Kiểm tra mỗi 24 giờ
+
+# Telegram Bot Configuration
+telegram:
+  enabled: true
+  bot_token: "YOUR_BOT_TOKEN_HERE"   # Lấy từ @BotFather
+  chat_id: "YOUR_CHAT_ID_HERE"       # Chat ID hoặc Group ID
+  # Ví dụ: bot_token: "7123456789:AAHxxx..."
+  # Ví dụ: chat_id: "-1001234567890"
+
+# Slack Configuration
+slack:
+  enabled: false
+  webhook_url: "YOUR_SLACK_WEBHOOK_URL_HERE"
+  channel: "#security-alerts"
+  username: "PrivilegeAuditor Bot"
+  icon_emoji: ":shield:"
+
+# Systems to audit
+audit_targets:
+  linux:
+    enabled: true
+    sudoers_file: "data/sample_sudoers"
+    group_file: "data/sample_group"
+    lastlog_file: "data/sample_lastlog.json"
+    auth_log: "data/sample_auth.log"
+
+  active_directory:
+    enabled: true
+    data_file: "data/sample_ad_users.json"
+    privileged_groups:
+      - "Domain Admins"
+      - "Enterprise Admins"
+      - "Schema Admins"
+      - "Backup Operators"
+
+  aws_iam:
+    enabled: true
+    data_file: "data/sample_iam_data.json"
+    # Để kết nối AWS thật, điền thông tin sau:
+    use_real_aws: false
+    aws_access_key_id: ""
+    aws_secret_access_key: ""
+    aws_region: "us-east-1"
+
+# Report settings
+reports:
+  output_dir: "reports"
+  formats:
+    - json
+    - html
+  keep_history_days: 90
+
+# Logging
+logging:
+  level: "INFO"   # DEBUG, INFO, WARNING, ERROR
+  log_file: "logs/auditor.log"
+  max_size_mb: 10
+  backup_count: 5

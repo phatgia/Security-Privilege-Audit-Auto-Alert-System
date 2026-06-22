@@ -1,0 +1,673 @@
+{
+  "generated_at": "2026-06-21T18:46:52.973378",
+  "systems": [
+    {
+      "system": "linux",
+      "timestamp": "2026-06-21T18:46:52.962050",
+      "summary": {
+        "total_privileged_users": 12,
+        "inactive_users": 5,
+        "critical_users": 3,
+        "inactive_threshold_days": 30
+      },
+      "users": [
+        {
+          "username": "sysadmin2019",
+          "privilege_source": [
+            "sudoers",
+            "group:wheel"
+          ],
+          "full_access": true,
+          "nopasswd": false,
+          "last_login": "2024-06-15T08:00:00",
+          "last_sudo": "2024-06-15T08:00:00",
+          "days_inactive": 736,
+          "risk_level": "CRITICAL",
+          "email": null,
+          "account_enabled": true,
+          "alerts": [
+            "⛔ Không hoạt động 736 ngày (vượt ngưỡng critical 60 ngày)",
+            "🔑 Có full sudo access (ALL=(ALL) ALL)"
+          ],
+          "notes": "CRITICAL: Inactive 371 days - should be disabled"
+        },
+        {
+          "username": "admin_old",
+          "privilege_source": [
+            "sudoers",
+            "group:wheel"
+          ],
+          "full_access": true,
+          "nopasswd": false,
+          "last_login": "2025-12-01T10:00:00",
+          "last_sudo": "2025-11-28T16:30:00",
+          "days_inactive": 202,
+          "risk_level": "CRITICAL",
+          "email": "oldadmin@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "⛔ Không hoạt động 202 ngày (vượt ngưỡng critical 60 ngày)",
+            "🔑 Có full sudo access (ALL=(ALL) ALL)"
+          ],
+          "notes": "CRITICAL: Inactive 202 days - former employee"
+        },
+        {
+          "username": "test_admin",
+          "privilege_source": [
+            "sudoers",
+            "group:sudo"
+          ],
+          "full_access": true,
+          "nopasswd": true,
+          "last_login": "2026-03-10T11:00:00",
+          "last_sudo": "2026-03-10T11:05:00",
+          "days_inactive": 103,
+          "risk_level": "CRITICAL",
+          "email": "test@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "⛔ Không hoạt động 103 ngày (vượt ngưỡng critical 60 ngày)",
+            "🔑 Có full sudo access (ALL=(ALL) ALL)",
+            "🔓 NOPASSWD sudo - không cần mật khẩu"
+          ],
+          "notes": "CRITICAL: Test account with full sudo - inactive 103 days"
+        },
+        {
+          "username": "michael.lee",
+          "privilege_source": [
+            "sudoers",
+            "group:sudo",
+            "group:wheel"
+          ],
+          "full_access": false,
+          "nopasswd": true,
+          "last_login": "2026-04-30T10:00:00",
+          "last_sudo": "2026-04-30T10:05:00",
+          "days_inactive": 52,
+          "risk_level": "HIGH",
+          "email": "michael.lee@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "⚠️ Không hoạt động 52 ngày (vượt ngưỡng 30 ngày)",
+            "🔓 NOPASSWD sudo - không cần mật khẩu",
+            "📋 Đặc quyền từ 3 nguồn: sudoers, group:sudo, group:wheel"
+          ],
+          "notes": "On extended leave - INACTIVE 52 DAYS"
+        },
+        {
+          "username": "deploy_svc",
+          "privilege_source": [
+            "sudoers",
+            "group:wheel"
+          ],
+          "full_access": false,
+          "nopasswd": true,
+          "last_login": "2026-06-15T03:00:00",
+          "last_sudo": "2026-06-15T03:00:00",
+          "days_inactive": 6,
+          "risk_level": "LOW",
+          "email": "deploy@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "🔓 NOPASSWD sudo - không cần mật khẩu"
+          ],
+          "notes": "CI/CD deployment service"
+        },
+        {
+          "username": "jane.smith",
+          "privilege_source": [
+            "sudoers",
+            "group:sudo",
+            "group:wheel"
+          ],
+          "full_access": true,
+          "nopasswd": true,
+          "last_login": "2026-06-18T14:22:00",
+          "last_sudo": "2026-06-18T14:25:00",
+          "days_inactive": 3,
+          "risk_level": "HIGH",
+          "email": "jane.smith@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "🔑 Có full sudo access (ALL=(ALL) ALL)",
+            "🔓 NOPASSWD sudo - không cần mật khẩu",
+            "📋 Đặc quyền từ 3 nguồn: sudoers, group:sudo, group:wheel"
+          ],
+          "notes": "DevOps lead"
+        },
+        {
+          "username": "helpdesk",
+          "privilege_source": [
+            "sudoers",
+            "group:wheel"
+          ],
+          "full_access": false,
+          "nopasswd": true,
+          "last_login": "2026-06-19T09:00:00",
+          "last_sudo": "2026-06-19T09:05:00",
+          "days_inactive": 2,
+          "risk_level": "LOW",
+          "email": "helpdesk@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "🔓 NOPASSWD sudo - không cần mật khẩu"
+          ],
+          "notes": "Limited sudo - active"
+        },
+        {
+          "username": "john.doe",
+          "privilege_source": [
+            "sudoers",
+            "group:adm",
+            "group:sudo",
+            "group:wheel"
+          ],
+          "full_access": true,
+          "nopasswd": true,
+          "last_login": "2026-06-20T08:30:00",
+          "last_sudo": "2026-06-20T09:15:00",
+          "days_inactive": 1,
+          "risk_level": "HIGH",
+          "email": "john.doe@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "🔑 Có full sudo access (ALL=(ALL) ALL)",
+            "🔓 NOPASSWD sudo - không cần mật khẩu",
+            "📋 Đặc quyền từ 4 nguồn: sudoers, group:adm, group:sudo, group:wheel"
+          ],
+          "notes": "Active senior sysadmin"
+        },
+        {
+          "username": "backup_agent",
+          "privilege_source": [
+            "sudoers"
+          ],
+          "full_access": false,
+          "nopasswd": true,
+          "last_login": "2026-06-20T02:00:00",
+          "last_sudo": "2026-06-20T02:00:00",
+          "days_inactive": 1,
+          "risk_level": "LOW",
+          "email": null,
+          "account_enabled": true,
+          "alerts": [
+            "🔓 NOPASSWD sudo - không cần mật khẩu"
+          ],
+          "notes": "Nightly backup agent"
+        },
+        {
+          "username": "devops01",
+          "privilege_source": [
+            "sudoers",
+            "group:sudo"
+          ],
+          "full_access": false,
+          "nopasswd": true,
+          "last_login": "2026-06-21T00:01:00",
+          "last_sudo": "2026-06-21T00:01:00",
+          "days_inactive": 0,
+          "risk_level": "LOW",
+          "email": "devops@company.com",
+          "account_enabled": true,
+          "alerts": [
+            "🔓 NOPASSWD sudo - không cần mật khẩu"
+          ],
+          "notes": "Automated deployment account"
+        },
+        {
+          "username": "monitoring",
+          "privilege_source": [
+            "sudoers"
+          ],
+          "full_access": false,
+          "nopasswd": true,
+          "last_login": "2026-06-21T10:00:00",
+          "last_sudo": "2026-06-21T10:00:00",
+          "days_inactive": 0,
+          "risk_level": "LOW",
+          "email": null,
+          "account_enabled": true,
+          "alerts": [
+            "🔓 NOPASSWD sudo - không cần mật khẩu"
+          ],
+          "notes": "Prometheus/Grafana monitoring"
+        },
+        {
+          "username": "syslog",
+          "privilege_source": [
+            "group:adm"
+          ],
+          "full_access": false,
+          "nopasswd": false,
+          "last_login": null,
+          "last_sudo": null,
+          "days_inactive": -1,
+          "risk_level": "LOW",
+          "email": null,
+          "account_enabled": true,
+          "alerts": [
+            "❓ Không có dữ liệu last login"
+          ],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "system": "active_directory",
+      "domain": "CORP.LOCAL",
+      "timestamp": "2026-06-21T18:46:52.962370",
+      "summary": {
+        "total_privileged_users": 8,
+        "total_users": 8,
+        "inactive_users": 4,
+        "critical_users": 3,
+        "inactive_threshold_days": 30
+      },
+      "users": [
+        {
+          "username": "admin_temp2024",
+          "display_name": "Temp Admin 2024",
+          "email": "temp@corp.local",
+          "dn": "CN=admin_temp2024,OU=Temp,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Domain Admins"
+          ],
+          "last_logon": "2024-12-31T23:59:00",
+          "days_inactive": 536,
+          "risk_level": "CRITICAL",
+          "account_enabled": true,
+          "alerts": [
+            "⛔ Không hoạt động 536 ngày",
+            "🔑 Domain Admin / Enterprise Admin: Domain Admins",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu chưa đổi 567 ngày",
+            "⚡ Tài khoản vẫn ENABLED dù inactive lâu"
+          ],
+          "notes": "CRITICAL: Temporary account - inactive 172 days, never cleaned up"
+        },
+        {
+          "username": "charlie.pham",
+          "display_name": "Charlie Pham",
+          "email": "charlie.pham@corp.local",
+          "dn": "CN=Charlie Pham,OU=Administrators,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Domain Admins",
+            "Schema Admins",
+            "Enterprise Admins"
+          ],
+          "last_logon": "2025-08-01T10:00:00",
+          "days_inactive": 324,
+          "risk_level": "CRITICAL",
+          "account_enabled": true,
+          "alerts": [
+            "⛔ Không hoạt động 324 ngày",
+            "🚨 Thành viên của 3 nhóm đặc quyền cao: Domain Admins, Schema Admins, Enterprise Admins",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu chưa đổi 355 ngày",
+            "⚡ Tài khoản vẫn ENABLED dù inactive lâu"
+          ],
+          "notes": "CRITICAL: Inactive 324 days - 3 privileged groups!"
+        },
+        {
+          "username": "bob.tran",
+          "display_name": "Bob Tran",
+          "email": "bob.tran@corp.local",
+          "dn": "CN=Bob Tran,OU=IT,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Domain Admins",
+            "Enterprise Admins"
+          ],
+          "last_logon": "2026-04-15T14:00:00",
+          "days_inactive": 67,
+          "risk_level": "CRITICAL",
+          "account_enabled": true,
+          "alerts": [
+            "⛔ Không hoạt động 67 ngày",
+            "🚨 Thành viên của 2 nhóm đặc quyền cao: Domain Admins, Enterprise Admins",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu đã 162 ngày tuổi",
+            "⚡ Tài khoản vẫn ENABLED dù inactive lâu"
+          ],
+          "notes": "WARNING: Inactive 67 days - dual privilege groups"
+        },
+        {
+          "username": "diana.le",
+          "display_name": "Diana Le",
+          "email": "diana.le@corp.local",
+          "dn": "CN=Diana Le,OU=IT,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Backup Operators"
+          ],
+          "last_logon": "2026-05-10T08:30:00",
+          "days_inactive": 42,
+          "risk_level": "MEDIUM",
+          "account_enabled": true,
+          "alerts": [
+            "⚠️ Không hoạt động 42 ngày",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu đã 126 ngày tuổi"
+          ],
+          "notes": "WARNING: Inactive 42 days"
+        },
+        {
+          "username": "frank.vu",
+          "display_name": "Frank Vu",
+          "email": "frank.vu@corp.local",
+          "dn": "CN=Frank Vu,OU=HR,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Domain Admins"
+          ],
+          "last_logon": "2026-06-01T09:00:00",
+          "days_inactive": 20,
+          "risk_level": "MEDIUM",
+          "account_enabled": true,
+          "alerts": [
+            "🔑 Domain Admin / Enterprise Admin: Domain Admins",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu đã 112 ngày tuổi"
+          ],
+          "notes": "WARNING: HR user with Domain Admin - suspicious - inactive 20 days"
+        },
+        {
+          "username": "erik.hoang",
+          "display_name": "Erik Hoang",
+          "email": "erik.hoang@corp.local",
+          "dn": "CN=Erik Hoang,OU=IT,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Domain Admins"
+          ],
+          "last_logon": "2026-06-19T16:45:00",
+          "days_inactive": 2,
+          "risk_level": "MEDIUM",
+          "account_enabled": true,
+          "alerts": [
+            "🔑 Domain Admin / Enterprise Admin: Domain Admins",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)"
+          ],
+          "notes": "Active sysadmin"
+        },
+        {
+          "username": "alice.nguyen",
+          "display_name": "Alice Nguyen",
+          "email": "alice.nguyen@corp.local",
+          "dn": "CN=Alice Nguyen,OU=IT,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Domain Admins"
+          ],
+          "last_logon": "2026-06-20T09:15:00",
+          "days_inactive": 1,
+          "risk_level": "MEDIUM",
+          "account_enabled": true,
+          "alerts": [
+            "🔑 Domain Admin / Enterprise Admin: Domain Admins",
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu đã 112 ngày tuổi"
+          ],
+          "notes": "IT Manager - Active"
+        },
+        {
+          "username": "svc_backup",
+          "display_name": "Backup Service Account",
+          "email": null,
+          "dn": "CN=svc_backup,OU=Service Accounts,DC=CORP,DC=LOCAL",
+          "privilege_groups": [
+            "Backup Operators"
+          ],
+          "last_logon": "2026-06-20T02:00:00",
+          "days_inactive": 1,
+          "risk_level": "MEDIUM",
+          "account_enabled": true,
+          "alerts": [
+            "📌 adminCount=1 (được bảo vệ bởi AdminSDHolder)",
+            "🔐 Mật khẩu chưa đổi 536 ngày"
+          ],
+          "notes": "Service account - active but password 171 days old"
+        }
+      ]
+    },
+    {
+      "system": "aws_iam",
+      "timestamp": "2026-06-21T18:46:52.962688",
+      "summary": {
+        "total_iam_users": 7,
+        "total_privileged_users": 5,
+        "inactive_privileged_users": 4,
+        "critical_users": 4,
+        "admins_without_mfa": 4,
+        "inactive_threshold_days": 30,
+        "overly_permissive_policies": [
+          "AdministratorAccess",
+          "PowerUserAccess"
+        ]
+      },
+      "users": [
+        {
+          "username": "root-backup-2021",
+          "arn": "arn:aws:iam::123456789012:user/root-backup-2021",
+          "has_admin_access": true,
+          "mfa_active": false,
+          "access_key_1_active": true,
+          "access_key_2_active": true,
+          "key_age_days": 1997,
+          "password_last_used": "2022-06-15T10:00:00",
+          "access_key_1_last_used": "2022-06-15T10:00:00",
+          "days_inactive": 1467,
+          "attached_policies": [
+            "AdministratorAccess"
+          ],
+          "groups": [
+            "Administrators"
+          ],
+          "risk_level": "CRITICAL",
+          "alerts": [
+            "⛔ Không hoạt động 1467 ngày",
+            "🔓 KHÔNG có MFA - rủi ro cao!",
+            "👑 Có AdministratorAccess policy: AdministratorAccess",
+            "🗝️ Access key chưa rotate 1997 ngày",
+            "🔑🔑 Có 2 active access keys cùng lúc"
+          ],
+          "notes": "CRITICAL: Inactive 1467 days - should have been deleted years ago!"
+        },
+        {
+          "username": "charlie-admin",
+          "arn": "arn:aws:iam::123456789012:user/charlie-admin",
+          "has_admin_access": true,
+          "mfa_active": false,
+          "access_key_1_active": true,
+          "access_key_2_active": true,
+          "key_age_days": 902,
+          "password_last_used": "2025-11-01T10:00:00",
+          "access_key_1_last_used": "2025-10-15T12:00:00",
+          "days_inactive": 232,
+          "attached_policies": [
+            "AdministratorAccess",
+            "PowerUserAccess"
+          ],
+          "groups": [
+            "Administrators"
+          ],
+          "risk_level": "CRITICAL",
+          "alerts": [
+            "⛔ Không hoạt động 232 ngày",
+            "🔓 KHÔNG có MFA - rủi ro cao!",
+            "👑 Có AdministratorAccess policy: AdministratorAccess, PowerUserAccess",
+            "🗝️ Access key chưa rotate 902 ngày",
+            "🔑🔑 Có 2 active access keys cùng lúc"
+          ],
+          "notes": "CRITICAL: Inactive 233 days, no MFA, 2 active keys, old key rotation"
+        },
+        {
+          "username": "erik-temp",
+          "arn": "arn:aws:iam::123456789012:user/erik-temp",
+          "has_admin_access": true,
+          "mfa_active": false,
+          "access_key_1_active": true,
+          "access_key_2_active": false,
+          "key_age_days": 81,
+          "password_last_used": "2026-04-05T10:00:00",
+          "access_key_1_last_used": "2026-04-05T10:00:00",
+          "days_inactive": 77,
+          "attached_policies": [
+            "AdministratorAccess"
+          ],
+          "groups": [
+            "Administrators"
+          ],
+          "risk_level": "CRITICAL",
+          "alerts": [
+            "⛔ Không hoạt động 77 ngày",
+            "🔓 KHÔNG có MFA - rủi ro cao!",
+            "👑 Có AdministratorAccess policy: AdministratorAccess"
+          ],
+          "notes": "WARNING: Temp user with Admin access, inactive 77 days"
+        },
+        {
+          "username": "bob-devops",
+          "arn": "arn:aws:iam::123456789012:user/bob-devops",
+          "has_admin_access": true,
+          "mfa_active": false,
+          "access_key_1_active": true,
+          "access_key_2_active": false,
+          "key_age_days": 202,
+          "password_last_used": "2026-04-20T14:00:00",
+          "access_key_1_last_used": "2026-04-20T15:00:00",
+          "days_inactive": 62,
+          "attached_policies": [
+            "AdministratorAccess"
+          ],
+          "groups": [
+            "Administrators"
+          ],
+          "risk_level": "CRITICAL",
+          "alerts": [
+            "⛔ Không hoạt động 62 ngày",
+            "🔓 KHÔNG có MFA - rủi ro cao!",
+            "👑 Có AdministratorAccess policy: AdministratorAccess",
+            "🗝️ Access key chưa rotate 202 ngày"
+          ],
+          "notes": "WARNING: No MFA - inactive 62 days"
+        },
+        {
+          "username": "admin-alice",
+          "arn": "arn:aws:iam::123456789012:user/admin-alice",
+          "has_admin_access": true,
+          "mfa_active": true,
+          "access_key_1_active": true,
+          "access_key_2_active": false,
+          "key_age_days": 171,
+          "password_last_used": "2026-06-19T08:30:00",
+          "access_key_1_last_used": "2026-06-19T10:00:00",
+          "days_inactive": 2,
+          "attached_policies": [
+            "AdministratorAccess"
+          ],
+          "groups": [
+            "Administrators",
+            "DevOps"
+          ],
+          "risk_level": "MEDIUM",
+          "alerts": [
+            "👑 Có AdministratorAccess policy: AdministratorAccess",
+            "🗝️ Access key chưa rotate 171 ngày"
+          ],
+          "notes": "Active admin with MFA"
+        }
+      ]
+    }
+  ],
+  "log_analysis": {
+    "log_file": "data/sample_auth.log",
+    "total_sudo_events": 8,
+    "total_ssh_logins": 5,
+    "failed_login_accounts": {
+      "sysadmin2019": 3,
+      "root": 1
+    },
+    "sudo_activity": {
+      "john.doe": {
+        "event_count": 2,
+        "last_activity": "Jun 19 10:00:00",
+        "sample_commands": [
+          "/usr/bin/apt update",
+          "/usr/bin/systemctl restart nginx"
+        ]
+      },
+      "jane.smith": {
+        "event_count": 1,
+        "last_activity": "Jun 18 10:00:00",
+        "sample_commands": [
+          "/usr/bin/docker ps"
+        ]
+      },
+      "michael.lee": {
+        "event_count": 1,
+        "last_activity": "Apr 30 10:00:00",
+        "sample_commands": [
+          "/usr/bin/vim /etc/nginx/nginx.conf"
+        ]
+      },
+      "admin_old": {
+        "event_count": 1,
+        "last_activity": "Dec 01 10:00:00",
+        "sample_commands": [
+          "/bin/bash"
+        ]
+      },
+      "test_admin": {
+        "event_count": 1,
+        "last_activity": "Mar 10 10:00:00",
+        "sample_commands": [
+          "/bin/bash"
+        ]
+      },
+      "devops01": {
+        "event_count": 2,
+        "last_activity": "Jun 21 04:00:00",
+        "sample_commands": [
+          "/usr/bin/docker pull nginx:latest",
+          "/usr/bin/systemctl restart app"
+        ]
+      }
+    },
+    "ssh_activity": {
+      "john.doe": {
+        "login_count": 1,
+        "last_login": "Jun 20 10:00:00",
+        "ips": [
+          "192.168.1.10"
+        ]
+      },
+      "jane.smith": {
+        "login_count": 1,
+        "last_login": "Jun 18 10:00:00",
+        "ips": [
+          "192.168.1.20"
+        ]
+      },
+      "michael.lee": {
+        "login_count": 1,
+        "last_login": "Apr 30 10:00:00",
+        "ips": [
+          "10.0.0.5"
+        ]
+      },
+      "admin_old": {
+        "login_count": 1,
+        "last_login": "Dec 01 10:00:00",
+        "ips": [
+          "192.168.100.1"
+        ]
+      },
+      "test_admin": {
+        "login_count": 1,
+        "last_login": "Mar 10 10:00:00",
+        "ips": [
+          "172.16.0.10"
+        ]
+      }
+    },
+    "suspicious_accounts": [
+      "sysadmin2019"
+    ]
+  }
+}

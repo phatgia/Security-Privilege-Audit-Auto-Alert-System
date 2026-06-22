@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Privilege Auditor — Security Dashboard</title>
+    <meta name="description" content="Real-time security privilege audit dashboard - Monitor Linux, Active Directory, and AWS IAM admin accounts">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background particles -->
+    <div class="bg-grid"></div>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="brand-icon">🔐</div>
+            <div class="brand-text">
+                <span class="brand-name">PrivilegeAuditor</span>
+                <span class="brand-version">v2.0</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="status-indicator" id="status-indicator">
+                <span class="status-dot active"></span>
+                <span class="status-text">Live Monitoring</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <div class="last-scan" id="last-scan-time">
+                <span class="scan-icon">🔄</span>
+                <span id="scan-time-text">Đang tải...</span>
+            </div>
+            <button class="btn-scan" id="btn-rescan" onclick="refreshData()">
+                <span class="btn-icon">⚡</span>
+                Quét lại
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Hero Stats Section -->
+        <section class="hero-section">
+            <div class="hero-header">
+                <h1 class="hero-title">
+                    <span class="title-icon">🛡️</span>
+                    Security Privilege Monitor
+                </h1>
+                <p class="hero-subtitle">Rà soát tự động quyền admin trên Linux, Active Directory và AWS IAM</p>
+            </div>
+
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card critical" id="stat-critical">
+                    <div class="stat-glow critical-glow"></div>
+                    <div class="stat-icon">🔴</div>
+                    <div class="stat-number" id="num-critical">0</div>
+                    <div class="stat-label">Critical Issues</div>
+                    <div class="stat-desc">Cần xử lý ngay</div>
+                </div>
+                <div class="stat-card high" id="stat-high">
+                    <div class="stat-glow high-glow"></div>
+                    <div class="stat-icon">🟠</div>
+                    <div class="stat-number" id="num-inactive">0</div>
+                    <div class="stat-label">Admin Inactive</div>
+                    <div class="stat-desc">Không dùng ≥30 ngày</div>
+                </div>
+                <div class="stat-card medium" id="stat-privileged">
+                    <div class="stat-glow medium-glow"></div>
+                    <div class="stat-icon">👑</div>
+                    <div class="stat-number" id="num-privileged">0</div>
+                    <div class="stat-label">Total Admins</div>
+                    <div class="stat-desc">Tài khoản đặc quyền</div>
+                </div>
+                <div class="stat-card info" id="stat-systems">
+                    <div class="stat-glow info-glow"></div>
+                    <div class="stat-icon">🖥️</div>
+                    <div class="stat-number" id="num-systems">3</div>
+                    <div class="stat-label">Systems</div>
+                    <div class="stat-desc">Đang giám sát</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Row -->
+        <section class="charts-section">
+            <div class="charts-grid">
+                <!-- Risk Distribution Chart -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span>📊</span> Phân Bố Rủi Ro
+                        </h2>
+                        <span class="card-badge">All Systems</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                    <div class="chart-legend" id="risk-legend"></div>
+                </div>
+
+                <!-- Inactive Days Distribution -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span>⏱️</span> Ngày Không Hoạt Động
+                        </h2>
+                        <span class="card-badge">Admin Accounts</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="inactiveChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- System Comparison -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span>🏗️</span> So Sánh Hệ Thống
+                        </h2>
+                        <span class="card-badge">Cross-Platform</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="systemChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter & Search Bar -->
+        <section class="filter-section">
+            <div class="filter-bar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Tìm kiếm theo username..." oninput="filterTable()">
+                </div>
+                <div class="filter-chips">
+                    <button class="chip active" data-filter="all" onclick="setFilter('all', this)">Tất cả</button>
+                    <button class="chip critical" data-filter="CRITICAL" onclick="setFilter('CRITICAL', this)">🔴 Critical</button>
+                    <button class="chip high" data-filter="HIGH" onclick="setFilter('HIGH', this)">🟠 High</button>
+                    <button class="chip medium" data-filter="MEDIUM" onclick="setFilter('MEDIUM', this)">🟡 Medium</button>
+                    <button class="chip low" data-filter="LOW" onclick="setFilter('LOW', this)">🟢 Low</button>
+                </div>
+                <div class="filter-system">
+                    <select id="system-filter" onchange="filterTable()">
+                        <option value="all">Tất cả hệ thống</option>
+                        <option value="linux">🐧 Linux</option>
+                        <option value="active_directory">🏢 Active Directory</option>
+                        <option value="aws_iam">☁️ AWS IAM</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Table -->
+        <section class="table-section">
+            <div class="table-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span>👤</span> Privileged Users — Kết Quả Audit
+                    </h2>
+                    <div class="table-actions">
+                        <span class="result-count" id="result-count">0 users</span>
+                        <button class="btn-export" onclick="exportJSON()">📥 Export JSON</button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('username')" class="sortable">
+                                    Username <span class="sort-icon">⇅</span>
+                                </th>
+                                <th>Hệ thống</th>
+                                <th onclick="sortTable('days_inactive')" class="sortable">
+                                    Days Inactive <span class="sort-icon">⇅</span>
+                                </th>
+                                <th onclick="sortTable('risk_level')" class="sortable">
+                                    Risk Level <span class="sort-icon">⇅</span>
+                                </th>
+                                <th>Last Login</th>
+                                <th>Privileges</th>
+                                <th>Alerts</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <tr>
+                                <td colspan="8" class="loading-cell">
+                                    <div class="loading-spinner">
+                                        <div class="spinner"></div>
+                                        <span>Đang tải dữ liệu...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Log Analysis Section -->
+        <section class="log-section">
+            <div class="log-card">
+                <div class="card-header">
+                    <h2 class="card-title"><span>📜</span> Auth Log Analysis</h2>
+                    <span class="card-badge">Real-time</span>
+                </div>
+                <div class="log-grid" id="log-grid">
+                    <div class="log-stat-item">
+                        <div class="log-stat-icon">⚡</div>
+                        <div class="log-stat-val" id="log-sudo">-</div>
+                        <div class="log-stat-label">Sudo Events</div>
+                    </div>
+                    <div class="log-stat-item">
+                        <div class="log-stat-icon">🔑</div>
+                        <div class="log-stat-val" id="log-ssh">-</div>
+                        <div class="log-stat-label">SSH Logins</div>
+                    </div>
+                    <div class="log-stat-item warn">
+                        <div class="log-stat-icon">🚨</div>
+                        <div class="log-stat-val warn" id="log-brute">-</div>
+                        <div class="log-stat-label">Brute Force</div>
+                    </div>
+                </div>
+                <div id="brute-force-list"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- User Detail Modal -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+        <div class="modal" id="user-modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">User Details</h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

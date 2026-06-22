@@ -1,0 +1,132 @@
+{
+  "domain": "CORP.LOCAL",
+  "domain_controllers": ["DC01.CORP.LOCAL", "DC02.CORP.LOCAL"],
+  "users": [
+    {
+      "sAMAccountName": "alice.nguyen",
+      "displayName": "Alice Nguyen",
+      "mail": "alice.nguyen@corp.local",
+      "distinguishedName": "CN=Alice Nguyen,OU=IT,DC=CORP,DC=LOCAL",
+      "memberOf": ["Domain Admins", "IT Department"],
+      "lastLogon": "2026-06-20T09:15:00",
+      "lastLogonTimestamp": "2026-06-20T09:15:00",
+      "pwdLastSet": "2026-03-01T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "IT Manager - Active"
+    },
+    {
+      "sAMAccountName": "bob.tran",
+      "displayName": "Bob Tran",
+      "mail": "bob.tran@corp.local",
+      "distinguishedName": "CN=Bob Tran,OU=IT,DC=CORP,DC=LOCAL",
+      "memberOf": ["Domain Admins", "Enterprise Admins", "IT Department"],
+      "lastLogon": "2026-04-15T14:00:00",
+      "lastLogonTimestamp": "2026-04-15T14:00:00",
+      "pwdLastSet": "2026-01-10T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "WARNING: Inactive 67 days - dual privilege groups"
+    },
+    {
+      "sAMAccountName": "charlie.pham",
+      "displayName": "Charlie Pham",
+      "mail": "charlie.pham@corp.local",
+      "distinguishedName": "CN=Charlie Pham,OU=Administrators,DC=CORP,DC=LOCAL",
+      "memberOf": ["Domain Admins", "Schema Admins", "Enterprise Admins"],
+      "lastLogon": "2025-08-01T10:00:00",
+      "lastLogonTimestamp": "2025-08-01T10:00:00",
+      "pwdLastSet": "2025-07-01T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "CRITICAL: Inactive 324 days - 3 privileged groups!"
+    },
+    {
+      "sAMAccountName": "diana.le",
+      "displayName": "Diana Le",
+      "mail": "diana.le@corp.local",
+      "distinguishedName": "CN=Diana Le,OU=IT,DC=CORP,DC=LOCAL",
+      "memberOf": ["Backup Operators", "IT Department"],
+      "lastLogon": "2026-05-10T08:30:00",
+      "lastLogonTimestamp": "2026-05-10T08:30:00",
+      "pwdLastSet": "2026-02-15T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "WARNING: Inactive 42 days"
+    },
+    {
+      "sAMAccountName": "svc_backup",
+      "displayName": "Backup Service Account",
+      "mail": null,
+      "distinguishedName": "CN=svc_backup,OU=Service Accounts,DC=CORP,DC=LOCAL",
+      "memberOf": ["Backup Operators"],
+      "lastLogon": "2026-06-20T02:00:00",
+      "lastLogonTimestamp": "2026-06-20T02:00:00",
+      "pwdLastSet": "2025-01-01T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "Service account - active but password 171 days old"
+    },
+    {
+      "sAMAccountName": "erik.hoang",
+      "displayName": "Erik Hoang",
+      "mail": "erik.hoang@corp.local",
+      "distinguishedName": "CN=Erik Hoang,OU=IT,DC=CORP,DC=LOCAL",
+      "memberOf": ["Domain Admins", "IT Department", "VPN Users"],
+      "lastLogon": "2026-06-19T16:45:00",
+      "lastLogonTimestamp": "2026-06-19T16:45:00",
+      "pwdLastSet": "2026-05-01T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "Active sysadmin"
+    },
+    {
+      "sAMAccountName": "admin_temp2024",
+      "displayName": "Temp Admin 2024",
+      "mail": "temp@corp.local",
+      "distinguishedName": "CN=admin_temp2024,OU=Temp,DC=CORP,DC=LOCAL",
+      "memberOf": ["Domain Admins"],
+      "lastLogon": "2024-12-31T23:59:00",
+      "lastLogonTimestamp": "2024-12-31T23:59:00",
+      "pwdLastSet": "2024-12-01T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "CRITICAL: Temporary account - inactive 172 days, never cleaned up"
+    },
+    {
+      "sAMAccountName": "frank.vu",
+      "displayName": "Frank Vu",
+      "mail": "frank.vu@corp.local",
+      "distinguishedName": "CN=Frank Vu,OU=HR,DC=CORP,DC=LOCAL",
+      "memberOf": ["Domain Admins", "HR Department"],
+      "lastLogon": "2026-06-01T09:00:00",
+      "lastLogonTimestamp": "2026-06-01T09:00:00",
+      "pwdLastSet": "2026-03-01T00:00:00",
+      "accountEnabled": true,
+      "adminCount": 1,
+      "description": "WARNING: HR user with Domain Admin - suspicious - inactive 20 days"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Domain Admins",
+      "description": "Designated administrators of the domain",
+      "members": ["alice.nguyen", "bob.tran", "charlie.pham", "erik.hoang", "admin_temp2024", "frank.vu"]
+    },
+    {
+      "name": "Enterprise Admins",
+      "description": "Designated administrators of the enterprise",
+      "members": ["bob.tran", "charlie.pham"]
+    },
+    {
+      "name": "Schema Admins",
+      "description": "Designated administrators of the schema",
+      "members": ["charlie.pham"]
+    },
+    {
+      "name": "Backup Operators",
+      "description": "Backup Operators can override security restrictions",
+      "members": ["diana.le", "svc_backup"]
+    }
+  ]
+}
